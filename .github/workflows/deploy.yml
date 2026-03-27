@@ -70,9 +70,6 @@ jobs:
             # Se connecter au registry
             echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-            # Créer le dossier si nécessaire
-            mkdir -p /opt/landing-page
-
             # Mettre à jour le docker-compose
             cat > /opt/landing-page/docker-compose.yml << 'EOF'
             services:
@@ -104,3 +101,52 @@ jobs:
 
             # Nettoyer les anciennes images
             docker image prune -f
+
+      - name: Notify Slack — success
+        if: success()
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "text": ":white_check_mark: *Déploiement réussi*",
+              "attachments": [
+                {
+                  "color": "good",
+                  "fields": [
+                    { "title": "Repo", "value": "${{ github.repository }}", "short": true },
+                    { "title": "Branch", "value": "${{ github.ref_name }}", "short": true },
+                    { "title": "Commit", "value": "<${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>" , "short": true },
+                    { "title": "Auteur", "value": "${{ github.actor }}", "short": true },
+                    { "title": "Message", "value": "${{ github.event.head_commit.message }}", "short": false }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+
+      - name: Notify Slack — failure
+        if: failure()
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "text": ":x: *Déploiement échoué*",
+              "attachments": [
+                {
+                  "color": "danger",
+                  "fields": [
+                    { "title": "Repo", "value": "${{ github.repository }}", "short": true },
+                    { "title": "Branch", "value": "${{ github.ref_name }}", "short": true },
+                    { "title": "Commit", "value": "<${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>", "short": true },
+                    { "title": "Auteur", "value": "${{ github.actor }}", "short": true },
+                    { "title": "Message", "value": "${{ github.event.head_commit.message }}", "short": false },
+                    { "title": "Logs", "value": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Voir les logs>", "short": false }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
