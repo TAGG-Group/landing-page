@@ -179,7 +179,8 @@ export function Services() {
 
                 {/* CTA */}
                 <button
-                  className="flex items-center gap-1.5 text-xs transition-all duration-200"
+                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                  className="flex items-center gap-1.5 text-xs transition-all duration-200 cursor-pointer"
                   style={{ color: service.color }}
                 >
                   En savoir plus
@@ -196,3 +197,4 @@ export function Services() {
     </section>
   );
 }
+

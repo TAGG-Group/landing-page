@@ -3,9 +3,9 @@ import { useRef, useState } from "react";
 import { Mail, Phone, MapPin, Send, CheckCircle, MessageSquare } from "lucide-react";
 
 const contactInfo = [
-  { icon: Mail, label: "Email", value: "contact@tagggroup.tn", color: "#2BA99B" },
-  { icon: Phone, label: "Téléphone", value: "+216 XX XXX XXX", color: "#E05742" },
-  { icon: MapPin, label: "Localisation", value: "Tunisie & International", color: "#F5A623" },
+  { icon: Mail, label: "Email", value: "it@tagg-group.com", color: "#2BA99B" },
+  { icon: Phone, label: "Téléphone", value: "+221 76 469 19 60 / +221 78 010 54 26", color: "#E05742" },
+  { icon: MapPin, label: "Localisation", value: "Sénégal & International", color: "#F5A623" },
 ];
 
 const services = [
@@ -239,3 +239,4 @@ export function Contact() {
     </section>
   );
 }
+

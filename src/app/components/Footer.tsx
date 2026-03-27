@@ -43,7 +43,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <img src={logoImg} alt="TÂGG Group" className="h-12 w-auto mb-5 brightness-0 invert" />
+            <img src={logoImg} alt="TÀGG Group" className="h-12 w-auto mb-5 brightness-0 invert" />
             <p className="text-white/40 text-sm leading-relaxed max-w-xs mb-4">
               Votre nid digital, là où les idées prennent leur envol.
             </p>
@@ -54,7 +54,7 @@ export function Footer() {
             {/* Tech badge */}
             <div className="inline-flex items-center gap-2 border border-[#2BA99B]/20 bg-[#2BA99B]/05 rounded-full px-4 py-2 mb-6">
               <Code2 size={14} className="text-[#2BA99B]" />
-              <span className="text-[#2BA99B] text-xs font-mono">Made with passion in Tunisia</span>
+              <span className="text-[#2BA99B] text-xs font-mono">Fait avec passion au Sénégal</span>
             </div>
 
             {/* Socials */}
@@ -98,7 +98,7 @@ export function Footer() {
       <div className="border-t border-white/[0.05]">
         <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/25 text-sm">
-            © 2026 TÂGG Group. Tous droits réservés. —{" "}
+            © 2026 TÀGG Group. Tous droits réservés. —{" "}
             <span className="text-[#2BA99B]/60">Votre nid digital</span>
           </p>
           <button
@@ -112,3 +112,4 @@ export function Footer() {
     </footer>
   );
 }
+

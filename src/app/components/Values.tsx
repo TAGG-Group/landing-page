@@ -113,7 +113,7 @@ export function Values() {
                   className="rounded-2xl p-6 flex flex-col justify-center"
                   style={{ background: "linear-gradient(135deg, #060D14, #0D3D37)" }}
                 >
-                  <p className="text-white text-sm font-mono mb-2 text-[#7EDED6]">{"<TÂGG />"}</p>
+                  <p className="text-white text-sm font-mono mb-2 text-[#7EDED6]">{"<TÀGG />"}</p>
                   <p className="text-white/60 text-xs leading-relaxed">
                     Votre nid digital, là où les idées prennent leur envol.
                   </p>
@@ -150,3 +150,4 @@ export function Values() {
     </section>
   );
 }
+
